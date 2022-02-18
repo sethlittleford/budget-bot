@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Build latest binary
+git pull origin main
+make build
+
+# Copy executable to directory in PATH (i.e. /usr/local/bin)
+cp budget-bot /usr/local/bin
+
+# Give file executable permission
+chmod +x /usr/local/bin/budget-bot

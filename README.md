@@ -2,6 +2,11 @@
 A cli that automates keeping a financial budget using the Plaid API &amp; Google Sheets API
 
 ## Install
+Simply run the `install` shell script from the root of this repository, i.e.:
+```bash
+./install
+```
+Alternatively, follow these steps for manual installation:
 1. Build the latest version of the budget-bot binary (macOS Mach-O 64-bit executable x86_64 file)
 ```bash
 git pull origin main
