@@ -1,16 +1,11 @@
+/*
+Copyright © 2022 Seth Littleford <seth.littleford@gmail.com>
+
+*/
 package main
 
-import (
-	"fmt"
-	"log"
-
-	"github.com/sethlittleford/budget-bot/version"
-)
+import "github.com/sethlittleford/budget-bot/cmd"
 
 func main() {
-	v, err := version.Version()
-	if err != nil {
-		log.Fatalln("Version() failed")
-	}
-	fmt.Println(v)
+	cmd.Execute()
 }
