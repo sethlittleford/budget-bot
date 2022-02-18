@@ -5,7 +5,7 @@ A cli that automates keeping a financial budget using the Plaid API &amp; Google
 1. Build the latest version of the budget-bot binary (macOS Mach-O 64-bit executable x86_64 file)
 ```bash
 git pull origin main
-go build
+make build
 ```
 2. Copy the executable to `/usr/local/bin`. For example:
 ```bash
