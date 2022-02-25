@@ -31,4 +31,5 @@ func init() {
 	
 	// Add Commands to root
 	rootCmd.AddCommand(versionCmd)
+	rootCmd.AddCommand(runCmd)
 }
