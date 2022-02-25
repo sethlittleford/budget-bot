@@ -50,15 +50,15 @@ func months() []string {
 		time.September,
 		time.October,
 		time.November,
-		time.December,	
+		time.December,
 	}
 	months := make([]string, 0)
 	for _, month := range m {
-		months = append(months, month.String()) // e.g. January
-		months = append(months, strings.ToLower(month.String())) // e.g. january
-		months = append(months, month.String()[:3]) // e.g. Jan
+		months = append(months, month.String())                      // e.g. January
+		months = append(months, strings.ToLower(month.String()))     // e.g. january
+		months = append(months, month.String()[:3])                  // e.g. Jan
 		months = append(months, strings.ToLower(month.String()[:3])) // e.g. jan
-		months = append(months, strconv.Itoa(int(month))) // e.g. 1
+		months = append(months, strconv.Itoa(int(month)))            // e.g. 1
 	}
 	return months
 }
