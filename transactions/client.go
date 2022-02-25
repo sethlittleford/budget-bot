@@ -10,9 +10,9 @@ import (
 )
 
 func init() {
-	err := godotenv.Load()
+	err := godotenv.Load(os.ExpandEnv("$GOPATH/budget-bot/.env")) // must be the absolute path for the .env file
 	if err != nil {
-		log.Fatal("Error loading .env file from root:", err)
+		log.Fatal("Error loading .env file from root: ", err)
 	}
 }
 
