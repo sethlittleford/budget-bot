@@ -2,10 +2,19 @@ package transactions
 
 import (
 	"errors"
+	"log"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/plaid/plaid-go/v2/plaid"
 )
+
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file from root")
+	}
+}
 
 type Client struct {
 	*plaid.APIClient

@@ -1,11 +1,11 @@
 package cmd
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 	"time"
 
+	"github.com/sethlittleford/budget-bot/transactions"
 	"github.com/spf13/cobra"
 )
 
@@ -32,7 +32,7 @@ budget-bot run 12`,
 	ValidArgs: months(),
 	Args:      cobra.ExactValidArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		fmt.Println("run called with arg:", args[0])
+		transactions.Fetch(args[0])
 		return nil
 	},
 }
