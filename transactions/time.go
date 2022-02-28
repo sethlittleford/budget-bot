@@ -68,3 +68,25 @@ func StringToMonth(s string) (time.Month, error) {
 		return 0, errors.New("Could not recognize month string")
 	}
 }
+
+// Years returns all years in YYYY format
+// that are valid arguments in the budget-bot run command
+func Years() []string {
+	base := "20"
+	years := make([]string, 0)
+	for i := 22; i < 100; i++ {
+		years = append(years, base+strconv.Itoa(i))
+	}
+	return years
+}
+
+// GetStartEndDates takes in a month and returns first and last days
+// of that month in Plaid string format YYYY-MM-DD
+func GetStartEndDates(m time.Month) (startDate, endDate string) {
+	firstOfMonth := time.Date(2022, m, 1, 0, 0, 0, 0, time.UTC)
+	lastOfMonth := firstOfMonth.AddDate(0, 1, -1)
+
+	startDate = firstOfMonth.Format("2020-01-01")
+	endDate = lastOfMonth.Format("2020-01-01")
+	return
+}
