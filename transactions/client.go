@@ -18,6 +18,7 @@ func init() {
 
 type Client struct {
 	*plaid.APIClient
+	transactionsAccessToken string
 }
 
 func NewClient() (*Client, error) {
@@ -31,6 +32,10 @@ func NewClient() (*Client, error) {
 	if !ok {
 		return nil, errors.New("PLAID_DEVELOPMENT_SECRET is not present in the environment")
 	}
+	transAccessToken, ok := os.LookupEnv("PLAID_DEVELOPMENT_TRANSACTIONS_ACCESS_TOKEN")
+	if !ok {
+		return nil, errors.New("PLAID_DEVELOPMENT_TRANSACTIONS_ACCESS_TOKEN is not present in the environment")
+	}
 
 	config.AddDefaultHeader("PLAID-CLIENT-ID", clientID)
 	config.AddDefaultHeader("PLAID-SECRET", devSecret)
@@ -39,5 +44,6 @@ func NewClient() (*Client, error) {
 
 	return &Client{
 		plaid.NewAPIClient(config),
+		transAccessToken,
 	}, nil
 }
