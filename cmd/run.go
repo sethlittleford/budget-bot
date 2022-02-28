@@ -1,10 +1,6 @@
 package cmd
 
 import (
-	"strconv"
-	"strings"
-	"time"
-
 	"github.com/sethlittleford/budget-bot/transactions"
 	"github.com/spf13/cobra"
 )
@@ -29,36 +25,10 @@ The <month> argument must be a valid month taking any of the following formats, 
 budget-bot run 1
 budget-bot run December
 budget-bot run 12`,
-	ValidArgs: months(),
+	ValidArgs: transactions.Months(),
 	Args:      cobra.ExactValidArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		transactions.Fetch(args[0])
 		return nil
 	},
-}
-
-func months() []string {
-	m := []time.Month{
-		time.January,
-		time.February,
-		time.March,
-		time.April,
-		time.May,
-		time.June,
-		time.July,
-		time.August,
-		time.September,
-		time.October,
-		time.November,
-		time.December,
-	}
-	months := make([]string, 0)
-	for _, month := range m {
-		months = append(months, month.String())                      // e.g. January
-		months = append(months, strings.ToLower(month.String()))     // e.g. january
-		months = append(months, month.String()[:3])                  // e.g. Jan
-		months = append(months, strings.ToLower(month.String()[:3])) // e.g. jan
-		months = append(months, strconv.Itoa(int(month)))            // e.g. 1
-	}
-	return months
 }
